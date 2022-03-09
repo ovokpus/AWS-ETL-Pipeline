@@ -40,10 +40,9 @@ WITH (format = 'PARQUET', compression = 'SNAPPY')
 --QUERYING JSON FILE IN S3, WHICH WAS CRAWLED WITH GLUE
 SELECT
     conversions.conversion_data.conversion_id,
-    conversions.conversion_data.publisher_reference,
-    --split(conversions.conversion_data.publisher_reference, '.')[1] AS tenant_id,
-    --split(conversions.conversion_data.publisher_reference, '.')[2] AS campaign_id,
-    --split(conversions.conversion_data.publisher_reference, '.')[3] AS link_id,
+    split(conversions.conversion_data.publisher_reference, '.')[1] AS tenant_id,
+    split(conversions.conversion_data.publisher_reference, '.')[2] AS campaign_id,
+    split(conversions.conversion_data.publisher_reference, '.')[3] AS link_id,
     conversions.conversion_data.conversion_time AS conversion_date,
     conversions.conversion_data.currency,
     conversions.conversion_data.country,
@@ -58,4 +57,5 @@ SELECT
     "context"."last-successful-load" AS LastSuccessfulLoad
 FROM "devflows_partner_feeds_pipeline"."apple_devflows_json_outputs"
 CROSS JOIN UNNEST(data.http_response_object.conversions) AS t(conversions)
-CROSS JOIN UNNEST(conversions.conversion_data.conversion_items) AS t(conversion_items);
+CROSS JOIN UNNEST(conversions.conversion_data.conversion_items) AS t(conversion_items)
+WHERE conversions.conversion_data.publisher_reference LIKE '%.%';
