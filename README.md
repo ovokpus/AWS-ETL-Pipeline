@@ -2,11 +2,17 @@
 
 ---
 
+### Data Engineering project with AWS Resources, orchestrated with Devflows
+
+---
+
 <div>
 	<img src="https://github.com/ovokpus/AWS-ETL-Pipeline/blob/main/images/architecture.jpg">
 </div>
 
-Data Engineering project with AWS Resources, orchestrated with Devflows
+---
+
+Data workflow that pulls data from an API and enriches it with DynamoDB table columns, with outputs sent to S3, for further analytics in Quicksight(future project phase)
 
 ---
 
