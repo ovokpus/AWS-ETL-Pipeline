@@ -6,12 +6,12 @@ today = date.today()
 client = boto3.client('athena')
 
 DATABASE = 'devflows_partner_feeds_pipeline'
-select_output = 's3://totogi-marketplace-partner-feeds/athena-query-outputs/client-telco-select/'
+select_output = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/'
 
 
 def create_tenant_list():
     query = '''SELECT DISTINCT tenantname 
-            FROM "devflows_partner_feeds_pipeline"."common_commission_table" '''
+            FROM "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" '''
 
     response = client.start_query_execution(
         QueryString=query,
@@ -43,7 +43,7 @@ def lambda_handler(event, context):
     result_list = create_tenant_list()
     response_dict = {}
     for result in result_list:
-        output = 's3://totogi-marketplace-partner-feeds/daily-telco-notification-{}/{}/{:02d}/daily-notification-for-{}/'.format(
+        output = 's3://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-{}/{}/{:02d}/daily-notification-for-{}/'.format(
             result.lower(), today.year, today.month, today)
         query = f'''SELECT
                      supplier,
@@ -54,7 +54,7 @@ def lambda_handler(event, context):
                      currency,
                      subscriberid,
                      subscriptiondate
-                FROM "devflows_partner_feeds_pipeline"."common_commission_table"
+                FROM "dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"."xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
                 WHERE tenantname = '{result}'
                 AND CAST(REPLACE(loadtime, 'T', ' ') AS timestamp) > date_add('hour', -24, now());'''
 

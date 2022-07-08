@@ -2,8 +2,8 @@ import time
 import boto3
 
 
-DATABASE = 'devflows_partner_feeds_pipeline'
-output = 's3://totogi-marketplace-partner-feeds/partners/apple/apple-commission-daily-manifest/'
+DATABASE = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+output = 's3://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/'
 
 
 def lambda_handler(event, context):
@@ -26,16 +26,16 @@ def lambda_handler(event, context):
                     conversions.conversion_data.conversion_id AS ConversionID,
                     split(conversions.conversion_data.publisher_reference, '.')[3] AS LinkID,
                     P."context"."upload-time" AS LoadTime
-                FROM "devflows_partner_feeds_pipeline"."apple_devflows_json_outputs" AS P
+                FROM "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"."apple_devflows_json_outputs" AS P
                 CROSS JOIN UNNEST(P.data.http_response_object.conversions) AS t(conversions)
                 CROSS JOIN UNNEST(conversions.conversion_data.conversion_items) AS t(conversion_items)
-                JOIN "devflows_partner_feeds_pipeline"."activationlink_refreshed" AS A
+                JOIN "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"."activationlink_refreshed" AS A
                 ON split(conversions.conversion_data.publisher_reference, '.')[3] = A.id
-                JOIN "devflows_partner_feeds_pipeline"."offer_refreshed" AS O
+                JOIN "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"."offer_refreshed" AS O
                 ON A.offerId = O.id
-                JOIN "devflows_partner_feeds_pipeline"."config_refreshed" AS Con
+                JOIN "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"."config_refreshed" AS Con
                 ON Con.id = split(conversions.conversion_data.publisher_reference, '.')[1]
-                JOIN "devflows_partner_feeds_pipeline"."campaign_refreshed" AS Cam
+                JOIN "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"."campaign_refreshed" AS Cam
                 ON Cam.id = split(conversions.conversion_data.publisher_reference, '.')[2]
                 WHERE conversions.conversion_data.publisher_reference LIKE '%.%'
                 AND CAST(REPLACE(P."context"."upload-time", 'T', ' ') AS timestamp) > date_add('day', -24, now());'''

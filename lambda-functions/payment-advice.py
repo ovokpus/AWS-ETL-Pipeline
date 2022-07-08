@@ -4,13 +4,13 @@ import boto3
 
 today = date.today()
 
-DATABASE = 'devflows_partner_feeds_pipeline'
-output = 's3://totogi-marketplace-partner-feeds/daily-payment-advice/{}/{:02d}/daily-advice-for-{}/'.format(
+DATABASE = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+output = 's3://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/{}/{:02d}/daily-advice-for-{}/'.format(
     today.year, today.month, today)
 
 
 def lambda_handler(event, context):
-    query = '''SELECT * FROM "devflows_partner_feeds_pipeline"."common_commission_table"
+    query = '''SELECT * FROM "dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"."xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
                 WHERE CAST(REPLACE(loadtime, 'T', ' ') AS timestamp) > date_add('hour', -24, now());'''
     client = boto3.client('athena')
     # Execution

@@ -16,8 +16,8 @@ job.init(args["JOB_NAME"], args)
 
 # Script generated for node DynamoDB table
 DynamoDBtable_node1 = glueContext.create_dynamic_frame.from_catalog(
-    database="devflows_partner_feeds_pipeline",
-    table_name="activationlink_ev22mfpjezd73ehjyli5stm5be_dev",
+    database="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    table_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     transformation_ctx="DynamoDBtable_node1",
 )
 
@@ -28,7 +28,7 @@ ApplyMapping_node2 = DynamicFrame.fromDF(
 
 # Script generated for node S3 bucket
 S3bucket_node3 = glueContext.getSink(
-    path="s3://totogi-marketplace-dynamodb-exports/glue-pipeline/activationlink/",
+    path="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     connection_type="s3",
     updateBehavior="UPDATE_IN_DATABASE",
     partitionKeys=[],
@@ -36,8 +36,8 @@ S3bucket_node3 = glueContext.getSink(
     transformation_ctx="S3bucket_node3",
 )
 S3bucket_node3.setCatalogInfo(
-    catalogDatabase="devflows_partner_feeds_pipeline",
-    catalogTableName="activationlink_refreshed",
+    catalogDatabase="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    catalogTableName="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 )
 S3bucket_node3.setFormat("json")
 S3bucket_node3.writeFrame(ApplyMapping_node2)

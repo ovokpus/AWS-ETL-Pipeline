@@ -50,13 +50,13 @@ This is table data that can be queried from Amazon Athena (with both SELECT and 
 
 ---
 
-### The Daily Payment advice Query
+### The Payment advice Query
 
 This is a query off the Common Commission table that retrieves data from the JSON feeds that has been enriched from DynamoDB.
 
 ---
 
-### The Daily Telco Notification
+### The Daily Notification Query
 
 This is another query from the Common Commission Table with selected columns specifically for notifying various Telcos on a daily basis
 
