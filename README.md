@@ -36,9 +36,7 @@ An ETL tool that allows us to build pipelines and applications by stitching toge
 
 ### Data Sources
 
-1. The first phase of the project involves pulling JSON feeds from the Apple Partnerize API. The endpoint in this use case is the Partner Conversions endpoint:
-
-https://appleservices-api.partnerize.com/reporting/report_publisher/publisher/{publisher_id}/conversion.json?
+1. The first phase of the project involves pulling JSON feeds from an external API endpoint
 
 2. The other Data Source is from Four Existing DynamoDB tables
 
@@ -72,6 +70,6 @@ At various stages of the pipeline, data will be staged within various S3 locatio
 
 2. From the AWS Glue step, DynamoDB tables are staged in another S3 location.
 
-3. The S3 location for the common commission table is staged here: s3://totogi-marketplace-partner-feeds/common-commission-table/. This location stores the table data in parquet format, which is one of the formats that accepts insert statements from Athena.
+3. The S3 location for the common commission table. This location stores the table data in parquet format, which is one of the formats that accepts insert statements from Athena.
 
 ---
