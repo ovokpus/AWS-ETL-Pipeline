@@ -1,0 +1,38 @@
+# Local partner-feeds stack.
+# `docker compose up --build` rebuilds the sample lake, then serves the desk.
+name: partner-feeds
+
+services:
+  etl:
+    build: .
+    command: ["python", "-m", "local_emulator"]
+    environment:
+      LAKE_DIR: /data/lake
+      LOCAL_UID: "${LOCAL_UID:-1000}"
+      LOCAL_GID: "${LOCAL_GID:-1000}"
+    volumes:
+      - ./.local-lake:/data/lake
+
+  dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      LAKE_DIR: /data/lake
+      LOCAL_UID: "${LOCAL_UID:-1000}"
+      LOCAL_GID: "${LOCAL_GID:-1000}"
+    volumes:
+      - ./.local-lake:/data/lake
+    depends_on:
+      etl:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health')
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
