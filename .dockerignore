@@ -1,0 +1,10 @@
+.git
+.venv
+.local-lake
+__pycache__
+.pytest_cache
+tests
+*.pyc
+images
+README.md
+PRODUCTIONIZING.md

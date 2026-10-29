@@ -130,3 +130,6 @@ dmypy.json
 athena-queries/config.py
 *.ipynb
 
+# Local emulator output (docker compose bind mount)
+.local-lake/
+
