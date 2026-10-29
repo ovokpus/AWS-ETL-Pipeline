@@ -166,6 +166,27 @@ Also in the feed, and excluded on purpose: an unknown link id, a publisher refer
 
 ---
 
+## Demo
+
+A one-minute screen recording of this local stack is on the pull request that added the desk. It is not in the git tree. The clip shows, in order:
+
+1. `docker compose run --rm --no-deps etl` printing `succeeded`, 6 commission rows, 4 payment-advice rows, and exit 0.
+2. Run status on the desk, with those same counts and a green succeeded banner.
+3. Common commission: the tenant chart, the country chart, and the item table.
+4. Daily payment advice, including the `daily-advice-for-…` CSV path and 4 rows.
+5. Telco notifications: Northwave Mobile's file (3 rows), then Cedarlink, whose file is header-only because that upload is 3 days old.
+
+Play the same sequence yourself after the desk is up:
+
+```bash
+docker compose up --build -d
+docker compose run --rm --no-deps etl
+```
+
+Open http://localhost:8501. In the sidebar, open Run status, then Commissions, then Payment advice, then Telco notifications. On the telco page, choose Northwave Mobile, then Cedarlink.
+
+---
+
 ## Run it with Docker
 
 You need Docker Engine and the Compose plugin. From the repo root:
