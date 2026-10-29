@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.jpg" alt="Copper pipe fittings and brass valves in a row ending at a glass funnel and green valve wheel" width="100%"></p>
+
 # AWS-ETL-Pipeline
 
 ---
