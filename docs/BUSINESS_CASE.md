@@ -39,7 +39,7 @@ These figures are **illustrative assumptions**, apart from the Athena price.
 |---|---|---|
 | Analyst hours a week spent reconciling commissions by hand | 10 | Assumption |
 | Share removed by the automated daily run | 80% | Assumption |
-| Analyst hourly cost | US$70 | BLS May 2024 median for data scientists, used as a proxy for a data analyst: $112,590 a year, about $54 an hour ([BLS](https://www.bls.gov/ooh/math/data-scientists.htm)). Multiplied by an assumed 1.3 for overhead. |
+| Analyst hourly cost | US$70 | BLS May 2024 median for data scientists, used as a proxy for a data analyst: $112,590 a year, about $54 an hour ([BLS](https://www.bls.gov/news.release/archives/ocwage_04022025.pdf)). Multiplied by an assumed 1.3 for overhead. |
 | Data scanned per day by the three queries | 10 GB | Assumption |
 | Athena price | US$5 per TB | [AWS](https://aws.amazon.com/athena/pricing/) |
 
@@ -64,4 +64,4 @@ Labour saved: 10 × 52 × 80% = **416 hours, about US$29,000 a year**. Athena co
 
 - AWS, Amazon Athena pricing: https://aws.amazon.com/athena/pricing/
 - Gartner, Data Quality topic page ($12.9M figure): https://www.gartner.com/en/data-analytics/topics/data-quality
-- U.S. Bureau of Labor Statistics, Data Scientists: https://www.bls.gov/ooh/math/data-scientists.htm
+- U.S. Bureau of Labor Statistics, OEWS May 2024 (Data Scientists): https://www.bls.gov/news.release/archives/ocwage_04022025.pdf
