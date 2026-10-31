@@ -10,6 +10,10 @@ The original drawing is still in [`images/architecture.jpg`](images/architecture
 
 ---
 
+## Business case
+
+Subscription affiliate programs pay partners per conversion, and reconciling those payments in spreadsheets is slow and hard to audit. This pipeline matches each conversion from the affiliate feed to its tenant, campaign, offer and link, then writes a daily commission table, a payment-advice file for finance and a notification file for each partner. It runs on serverless AWS for a few dollars a year at modest volume. [docs/BUSINESS_CASE.md](docs/BUSINESS_CASE.md) covers the buyer, use cases, an illustrative ROI model and known edge cases.
+
 ## What the pipeline does, step by step
 
 1. **Devflows pulls the feed.** A scheduler wakes up, reads an SQS message, and calls the Partnerize HTTP API. The JSON response lands in S3. A Google Chat node reports success. A second SQS queue stores the last successful load time. An error sink sits beside that flow for failures. The canvas nodes are `scheduler-v2`, `sqs`, `request-http`, `google-chat`, `s3`, and `error-sink`.
