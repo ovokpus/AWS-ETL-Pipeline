@@ -1,6 +1,6 @@
-<p align="center"><img src="assets/banner.jpg" alt="Copper pipe fittings and brass valves in a row ending at a glass funnel and green valve wheel" width="100%"></p>
-
 # AWS ETL Pipeline
+
+<p align="center"><img src="assets/banner.jpg" alt="Copper pipe fittings and brass valves in a row ending at a glass funnel and green valve wheel" width="100%"></p>
 
 Partnerize sends Apple subscription conversions as JSON. Four DynamoDB tables (tenant config, campaign, offer, activation link) say who that conversion belongs to. This repo is the Glue, Athena, and Lambda path that joins those inputs and writes three outputs: a common commission table, a daily payment-advice file, and one daily notification file per telco.
 
